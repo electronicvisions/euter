@@ -28,6 +28,7 @@ public:
 #ifndef PYPLUSPLUS
 	std::unique_ptr<CellParameterVector> copy() const;
 	static std::unique_ptr<CellParameterVector> create(size_t size, CellType t);
+	virtual bool supported() const = 0;
 #endif
 
 private:
