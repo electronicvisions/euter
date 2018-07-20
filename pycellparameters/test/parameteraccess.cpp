@@ -122,9 +122,13 @@ TEST(Parameters, Serialize_EIF_cond_exp_isfa_ista_Parameters)
 	a.get("v_reset", SetValue(-80.0));
 
 	std::stringstream tmp;
-	boost::archive::xml_oarchive oa(tmp);
-	oa << boost::serialization::make_nvp("object", a);
-	oa << boost::serialization::make_nvp("object", b);
+	// ensure that oa is destructed, otherwise tmp does not contain
+	// "</boost_serialization>" when deserializing below
+	{
+		boost::archive::xml_oarchive oa(tmp);
+		oa << boost::serialization::make_nvp("object", a);
+		oa << boost::serialization::make_nvp("object", b);
+	}
 
 	a.v = 3.0;
 	a.get("v_reset", SetValue(5.0));
