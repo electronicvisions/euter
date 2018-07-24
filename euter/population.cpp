@@ -90,8 +90,8 @@ size_t Population::firstNeuronId() const
 
 std::ostream& operator<< (std::ostream& o, const Population & p)
 {
-	o << "Population(" << getCellTypeName(p.type())
-	  << ", " << p.size() << ")";
+	o << "Population(id=" << p.id() << ", type=" << getCellTypeName(p.type())
+	  << ", size=" << p.size() << ", label=\"" << p.label() << "\")";
 	return o;
 }
 
