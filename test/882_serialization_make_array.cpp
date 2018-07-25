@@ -42,6 +42,7 @@ public:
 		}
 		reset();
 		*oa.get() << make_nvp("object", make_array(in, size));
+		oa.reset(); // flush OArchive...
 		flush();
 	}
 

@@ -65,28 +65,48 @@ public:
 	typedef O OArchive;
 
 	SerializationTest() :
-	    oa(archive), ia(archive), rng(boost::make_shared<NativeRandomGenerator>(22949142706))
+	    rng(boost::make_shared<NativeRandomGenerator>(22949142706))
 	{}
 
 protected:
 	ObjectStore store;
 	std::stringstream archive;
-	OArchive oa;
-	IArchive ia;
+	std::unique_ptr<OArchive> oa;
+	std::unique_ptr<IArchive> ia;
 	boost::shared_ptr<RandomGenerator> rng;
 
 	template <typename T>
 	std::string transfer(T & in, T & out)
 	{
-		oa << make_nvp("object", in);
+		if (!oa) {
+			oa.reset(new OArchive(archive));
+		}
+		(*oa) << make_nvp("object", in);
+		oa.reset(); // flush
 		archive.flush();
 		std::string ret = archive.str();
-		ia >> make_nvp("object", out);
+		if (!ia) {
+			ia.reset(new IArchive(archive));
+		}
+		(*ia) >> make_nvp("object", out);
+		ia.reset();
 		return ret;
 	}
 
-	OArchive & getOA() { return oa; }
-	IArchive & getIA() { return ia; }
+	// ECM (2018-07-25): Needed for tests needing type registration on living
+	// archiver object.
+	OArchive & getOA() {
+		if (!oa) {
+			oa.reset(new OArchive(archive));
+		}
+		return *oa;
+	}
+	IArchive & getIA() {
+		if (!ia) {
+			ia.reset(new IArchive(archive));
+		}
+		return *ia;
+	}
 	ObjectStore & getStore() { return store; }
 	boost::shared_ptr<RandomGenerator>  & getRng() { return rng; }
 };
@@ -95,13 +115,17 @@ TYPED_TEST_CASE(SerializationTest, ArchiveTypeList);
 
 TYPED_TEST(SerializationTest, CellParameterVector)
 {
+	// ECM(2018-07-25): OArchive only writes upon destruction but we have to register
+	// all types first... cf. getOA/IA functions above
+
 	// Register types by hand, otherwise this is done by Population::serialize
 	RegisterCellTypeForSerializationVisitor<
-	        typename TestFixture::IArchive, TypedCellParameterVector> vi(TestFixture::getIA());
-	RegisterCellTypeForSerializationVisitor<
 	        typename TestFixture::OArchive, TypedCellParameterVector> vo(TestFixture::getOA());
-	forallCellTypes(vi);
 	forallCellTypes(vo);
+
+	RegisterCellTypeForSerializationVisitor<
+	        typename TestFixture::IArchive, TypedCellParameterVector> vi(TestFixture::getIA());
+	forallCellTypes(vi);
 
 	std::unique_ptr<CellParameterVector> p_in, p_out;
 	p_in = CellParameterVector::create(200, CellType::IF_brainscales_hardware);
