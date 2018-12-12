@@ -134,9 +134,9 @@ ProjectionMatrix const & Projection::getDelays() const
 
 void Projection::printOn(std::ostream& o) const
 {
-	o << "Projection (";
+	o << "id: " << id() << ", size: " << size() << ", connector: \"";
 	mMethod->printOn(o);
-	o << ")";
+	o << "\", target: \"" << target() << "\", source: \"" << source() << "\"";
 }
 
 std::ostream& operator<< (std::ostream& o, const Projection & p)
