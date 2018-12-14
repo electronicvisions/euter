@@ -19,7 +19,8 @@ Projection::Projection(
         const boost::shared_ptr<RandomGenerator> & rng,
         source_type source,
         synapse_type target,
-		const boost::shared_ptr<SynapseDynamics>& synapse_dynamics
+		const boost::shared_ptr<SynapseDynamics>& synapse_dynamics,
+		label_type label
         ) :
 	mProjectionId(store.nextProjectionId()),
     mPre(presynaptic_population),
@@ -28,7 +29,8 @@ Projection::Projection(
     mRng(rng),
     mSource(source),
     mTarget(target),
-	mSynapseDynamics(synapse_dynamics)
+	mSynapseDynamics(synapse_dynamics),
+	mLabel(label)
 {
 	if (!mRng)
 	{
@@ -52,10 +54,11 @@ ProjectionPtr Projection::create(
 	const boost::shared_ptr<RandomGenerator> & rng,
 	source_type s,
 	synapse_type t,
-	const boost::shared_ptr<SynapseDynamics>& synapse_dynamics
+	const boost::shared_ptr<SynapseDynamics>& synapse_dynamics,
+	label_type l
 	)
 {
-	ProjectionPtr proj(new Projection(store, pre, post, m, rng, s, t, synapse_dynamics));
+	ProjectionPtr proj(new Projection(store, pre, post, m, rng, s, t, synapse_dynamics, l));
 	store.insert(proj);
 
 	return proj;
@@ -90,6 +93,11 @@ Projection::source_type Projection::source() const
 Projection::synapse_type Projection::target() const
 {
 	return mTarget;
+}
+
+Projection::label_type Projection::label() const
+{
+	return mLabel;
 }
 
 boost::shared_ptr<SynapseDynamics> Projection::dynamics()
@@ -136,7 +144,8 @@ void Projection::printOn(std::ostream& o) const
 {
 	o << "id: " << id() << ", size: " << size() << ", connector: \"";
 	mMethod->printOn(o);
-	o << "\", target: \"" << target() << "\", source: \"" << source() << "\"";
+	o << "\", target: \"" << target() << "\", source: \"" << source() << "\", label: \"" << label()
+	  << "\"";
 }
 
 std::ostream& operator<< (std::ostream& o, const Projection & p)

@@ -24,6 +24,7 @@ public:
 	typedef Assembly population_type;
 	typedef std::string source_type;
 	typedef std::string synapse_type;
+	typedef std::string label_type;
 
 	Projection(); // FIXME: should be protected/private and mapping::GraphBuilder should be friend
 	virtual ~Projection();
@@ -36,9 +37,9 @@ public:
 		   boost::shared_ptr<RandomGenerator> const& rng,
 		   source_type source = "",
 		   synapse_type target = "excitatory",
-		   const boost::shared_ptr<SynapseDynamics>& synapse_dynamics = boost::shared_ptr<SynapseDynamics>()
+		   const boost::shared_ptr<SynapseDynamics>& synapse_dynamics = boost::shared_ptr<SynapseDynamics>(),
+		   label_type label = ""
 		   );
-		   // TODO: label
 		   // TODO: rng
 
 	const population_type & pre()  const;
@@ -46,6 +47,7 @@ public:
 
 	source_type source() const;
 	synapse_type target() const;
+	label_type label() const;
 
 	size_t size() const;
 	size_t id() const;
@@ -76,9 +78,9 @@ private:
 	        const boost::shared_ptr<RandomGenerator> & rng,
 	        source_type source = "",
 	        synapse_type target = "",
-			const boost::shared_ptr<SynapseDynamics>& synapse_dynamics = boost::shared_ptr<SynapseDynamics>()
+			const boost::shared_ptr<SynapseDynamics>& synapse_dynamics = boost::shared_ptr<SynapseDynamics>(),
 	        // TODO: SynapseDynamics = None
-	        // TODO: label = None
+			label_type label = ""
 	        );
 
 	size_t mProjectionId;
@@ -89,6 +91,7 @@ private:
 	source_type mSource;
 	synapse_type mTarget;
 	boost::shared_ptr<SynapseDynamics> mSynapseDynamics;
+	label_type mLabel;
 
 	ProjectionMatrix mDelays;
 	ProjectionMatrix mWeigths;
@@ -110,6 +113,7 @@ void Projection::serialize(Archiver& ar, const unsigned int) {
 	   & BOOST_SERIALIZATION_NVP(mSource)
 	   & BOOST_SERIALIZATION_NVP(mTarget)
 	   & BOOST_SERIALIZATION_NVP(mSynapseDynamics)
+	   & BOOST_SERIALIZATION_NVP(mLabel)
 	   & BOOST_SERIALIZATION_NVP(mProjectionId)
 	   & BOOST_SERIALIZATION_NVP(mDelays)
 	   & BOOST_SERIALIZATION_NVP(mWeigths)
