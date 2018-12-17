@@ -1,5 +1,5 @@
 #define NATIVE_RANDOM_DISTRIBUTION_DO_EXPORT_IMPL
 
-#include "nativerandomdistributions.h"
+#include "euter/nativerandomdistributions.h"
 
 BOOST_CLASS_EXPORT_IMPLEMENT(NativeRandomDistribution)

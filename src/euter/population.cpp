@@ -1,10 +1,10 @@
-#include "population.h"
+#include "euter/population.h"
 
 #include <stdexcept>
 #include <boost/make_shared.hpp>
 
-#include "space.h"
-#include "objectstore.h"
+#include "euter/space.h"
+#include "euter/objectstore.h"
 
 Population::Population(
 	ObjectStore& store,

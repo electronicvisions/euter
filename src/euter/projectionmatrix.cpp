@@ -1,12 +1,12 @@
-#include "projectionmatrix.h"
+#include "euter/projectionmatrix.h"
 
 #include <algorithm>
 #include <sstream>
 
-#include "connector.h"
-#include "assembly.h"
-#include "exceptions.h"
-#include "random.h"
+#include "euter/connector.h"
+#include "euter/assembly.h"
+#include "euter/exceptions.h"
+#include "euter/random.h"
 
 
 class ProjectionMatrix::InitDefaultMatrixVisitor : public boost::static_visitor<void>

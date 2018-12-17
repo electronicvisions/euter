@@ -15,14 +15,14 @@ def build(bld):
 
     bld(
             target          = 'cellparameters_inc',
-            export_includes = '..',
+            export_includes = '../include',
     )
 
     bld(
             target          = 'cellparameters_access',
             features        = 'cxx cxxshlib pyembed',
             use             = [ 'euter', 'boost_serialization', 'pywrap', 'cellparameters_inc'],
-            source          = bld.path.ant_glob('*.cpp'),
+            source          = bld.path.parent.ant_glob('src/pycellparameters/*.cpp'),
             install_path    = '${PREFIX}/lib',
     )
 

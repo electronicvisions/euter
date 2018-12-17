@@ -19,13 +19,13 @@ def build(bld):
 
     bld(
             target          = 'euter_inc',
-            export_includes = '.',
+            export_includes = 'include',
     )
 
     bld (
             target          = 'euter',
             features        = 'cxx cxxshlib',
-            source          =  bld.path.ant_glob('euter/*.cpp'),
+            source          =  bld.path.ant_glob('src/euter/*.cpp'),
             use             = [
                 'euter_inc',
                 'boost_serialization',

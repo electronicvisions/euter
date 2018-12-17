@@ -1,7 +1,7 @@
 #include "euter/cellparameters.h"
 
 #ifndef PYPLUSPLUS
-#include "pyparameteraccess.h"
+#include "pycellparameters/pyparameteraccess.h"
 
 template <typename CellParameters>
 struct CellParametersConstructors
@@ -19,4 +19,5 @@ struct CellParametersConstructors
 		return p;
 	}
 };
+
 #endif

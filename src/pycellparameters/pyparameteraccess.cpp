@@ -1,6 +1,6 @@
-#include "pyparameteraccess.h"
+#include "pycellparameters/pyparameteraccess.h"
 
-#include "getparametervector.h"
+#include "pycellparameters/getparametervector.h"
 #include "euter/population.h"
 #include "euter/population_view.h"
 

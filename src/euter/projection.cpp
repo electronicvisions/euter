@@ -1,13 +1,13 @@
-#include "projection.h"
+#include "euter/projection.h"
 
 #include <boost/make_shared.hpp>
 
-#include "objectstore.h"
-#include "connector.h"
-#include "population.h"
-#include "objectstore.h"
+#include "euter/objectstore.h"
+#include "euter/connector.h"
+#include "euter/population.h"
+#include "euter/objectstore.h"
 
-#include "nativerandomgenerator.h"
+#include "euter/nativerandomgenerator.h"
 
 Projection::Projection() {}
 

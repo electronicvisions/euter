@@ -1,11 +1,11 @@
-#include "fixednumberpreconnector.h"
+#include "euter/fixednumberpreconnector.h"
 
 #include <numeric>
 
 #include <log4cxx/logger.h>
 
-#include "exceptions.h"
-#include "assembly.h"
+#include "euter/exceptions.h"
+#include "euter/assembly.h"
 
 FixedNumberPreConnector::FixedNumberPreConnector() :
     mN(0),

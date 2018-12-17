@@ -1,9 +1,9 @@
-#include "distancedependentprobabilityconnector.h"
+#include "euter/distancedependentprobabilityconnector.h"
 
 #include <numeric>
 #include <random>
 
-#include "assembly.h"
+#include "euter/assembly.h"
 
 DistanceDependentProbabilityConnector::DistanceDependentProbabilityConnector(
 	boost::shared_ptr<ProbabilityGenerator> const& probability_generator,

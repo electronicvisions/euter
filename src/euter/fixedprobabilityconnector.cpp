@@ -1,8 +1,8 @@
-#include "fixedprobabilityconnector.h"
+#include "euter/fixedprobabilityconnector.h"
 
 #include <random>
-#include "random.h"
-#include "random_traits.h"
+#include "euter/random.h"
+#include "euter/random_traits.h"
 
 FixedProbabilityConnector::FixedProbabilityConnector(
         double       const p_connect,

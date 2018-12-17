@@ -1,7 +1,7 @@
-#include "population_view.h"
+#include "euter/population_view.h"
 
-#include "population.h"
-#include "typedcellparametervector.h"
+#include "euter/population.h"
+#include "euter/typedcellparametervector.h"
 
 PopulationView::PopulationView() :
     mSize(0)

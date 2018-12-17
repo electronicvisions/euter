@@ -1,6 +1,6 @@
-#include "assembly.h"
+#include "euter/assembly.h"
 
-#include "objectstore.h"
+#include "euter/objectstore.h"
 
 Assembly::Assembly(std::string const& label) :
 	mLabel(label)

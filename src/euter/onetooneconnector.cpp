@@ -1,5 +1,5 @@
-#include "onetooneconnector.h"
-#include "assembly.h"
+#include "euter/onetooneconnector.h"
+#include "euter/assembly.h"
 
 OneToOneConnector::OneToOneConnector(
         const bool allow_self_connections,

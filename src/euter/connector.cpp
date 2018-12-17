@@ -6,8 +6,8 @@
 
 #include <boost/make_shared.hpp>
 
-#include "connector.h"
-#include "population.h"
+#include "euter/connector.h"
+#include "euter/population.h"
 
 BOOST_CLASS_EXPORT_IMPLEMENT(Connector)
 

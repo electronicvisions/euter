@@ -1,5 +1,5 @@
-#include "fromlistconnector.h"
-#include "assembly.h"
+#include "euter/fromlistconnector.h"
+#include "euter/assembly.h"
 
 #include <sstream>
 

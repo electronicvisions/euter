@@ -1,10 +1,10 @@
-#include "current.h"
-#include "assembly.h"
+#include "euter/current.h"
+#include "euter/assembly.h"
 
 #include <boost/shared_ptr.hpp>
 #include <boost/make_shared.hpp>
 
-#include "objectstore.h"
+#include "euter/objectstore.h"
 
 void CurrentSource::inject_into(const boost::shared_ptr<Assembly>& target)
 {

@@ -1,4 +1,4 @@
-#include "synapses.h"
+#include "euter/synapses.h"
 
 BOOST_CLASS_EXPORT_IMPLEMENT(TsodyksMarkramMechanism)
 BOOST_CLASS_EXPORT_IMPLEMENT(AdditiveWeightDependence)

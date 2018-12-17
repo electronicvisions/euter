@@ -1,5 +1,5 @@
-#include "projection_view.h"
-#include "projection.h"
+#include "euter/projection_view.h"
+#include "euter/projection.h"
 
 ProjectionView::ProjectionView(
 	population_type const pre,
