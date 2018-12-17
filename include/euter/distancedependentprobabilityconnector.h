@@ -5,6 +5,8 @@
 #include "connector.h"
 #include "space.h"
 
+namespace euter {
+
 struct ProbabilityGenerator
 {
 	virtual ConnectorTypes::value_type operator()(SpatialTypes::distance_type distance) const = 0;
@@ -49,4 +51,6 @@ private:
 	int mNConnections;
 };
 
-BOOST_CLASS_EXPORT_KEY(DistanceDependentProbabilityConnector)
+} // namespace euter
+
+BOOST_CLASS_EXPORT_KEY(euter::DistanceDependentProbabilityConnector)

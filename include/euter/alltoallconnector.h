@@ -2,6 +2,8 @@
 
 #include "connector.h"
 
+namespace euter {
+
 class AllToAllConnector : public Connector
 {
 public:
@@ -30,4 +32,6 @@ private:
 		}
 };
 
-BOOST_CLASS_EXPORT_KEY(AllToAllConnector)
+} // namespace euter
+
+BOOST_CLASS_EXPORT_KEY(euter::AllToAllConnector)

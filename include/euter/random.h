@@ -6,6 +6,8 @@
 #include "boost/serialization/serialization.h"
 #include "random_traits.h"
 
+namespace euter {
+
 /// Abstract base for RandomGenerators to be use.
 /// This class implements the interface used by the stl random engines to allow
 /// easy usage with stl distributions
@@ -176,8 +178,10 @@ struct NumericRange
 	T mMin, mMax;
 };
 
-BOOST_SERIALIZATION_ASSUME_ABSTRACT(RandomGenerator)
-BOOST_SERIALIZATION_ASSUME_ABSTRACT(RandomDistribution)
+} // namespace euter
 
-BOOST_CLASS_EXPORT_KEY(RandomGenerator)
-BOOST_CLASS_EXPORT_KEY(RandomDistribution)
+BOOST_SERIALIZATION_ASSUME_ABSTRACT(euter::RandomGenerator)
+BOOST_SERIALIZATION_ASSUME_ABSTRACT(euter::RandomDistribution)
+
+BOOST_CLASS_EXPORT_KEY(euter::RandomGenerator)
+BOOST_CLASS_EXPORT_KEY(euter::RandomDistribution)

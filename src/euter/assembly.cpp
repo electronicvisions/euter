@@ -2,6 +2,8 @@
 
 #include "euter/objectstore.h"
 
+namespace euter {
+
 Assembly::Assembly(std::string const& label) :
 	mLabel(label)
 {
@@ -134,3 +136,5 @@ std::ostream& operator<< (std::ostream & o, const Assembly & a)
 	o << "PyAssembly (" << a.size() << ")" ;
 	return o;
 }
+
+} // namespace euter

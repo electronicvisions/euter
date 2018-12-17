@@ -14,6 +14,8 @@
 #include <boost/serialization/vector.hpp>
 #include <boost/serialization/map.hpp>
 
+namespace euter {
+
 class ObjectStore;
 class Population;
 typedef boost::shared_ptr<Population> PopulationPtr;
@@ -113,3 +115,5 @@ void Population::serialize(Archiver& ar, unsigned int const /*version*/)
 	   & BOOST_SERIALIZATION_NVP(mSpikes)
 	   & BOOST_SERIALIZATION_NVP(mMembraneVoltages);
 }
+
+} // namespace euter

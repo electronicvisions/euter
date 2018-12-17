@@ -9,7 +9,9 @@
 #include "euter/connector.h"
 #include "euter/population.h"
 
-BOOST_CLASS_EXPORT_IMPLEMENT(Connector)
+BOOST_CLASS_EXPORT_IMPLEMENT(euter::Connector)
+
+namespace euter {
 
 Connector::Connector(const default_type & weights,
                      const default_type & delays) :
@@ -52,3 +54,5 @@ const Connector::default_type & Connector::getDefaultWeights() const
 {
 	return mWeights;
 }
+
+} // namespace euter

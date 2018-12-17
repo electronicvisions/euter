@@ -2,6 +2,8 @@
 
 #include <sstream>
 
+namespace euter {
+
 std::string NativeRandomGenerator::getState() const
 {
 	std::stringstream stream;
@@ -15,4 +17,6 @@ void NativeRandomGenerator::setState(const std::string & state)
 	stream >> mRng;
 }
 
-BOOST_CLASS_EXPORT_IMPLEMENT(NativeRandomGenerator)
+} // namespace euter
+
+BOOST_CLASS_EXPORT_IMPLEMENT(euter::NativeRandomGenerator)

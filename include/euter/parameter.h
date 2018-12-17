@@ -15,6 +15,8 @@
 #include <boost/functional/hash.hpp>
 #include "boost/serialization/serialization.h"
 
+namespace euter {
+
 // Dark magic happens here, my friend. Use as:
 // PARAMETER_STRUCT(IF_Foo_Bar_Parameters,
 //     PARAMETER(double, v_init, -80.0),
@@ -43,6 +45,7 @@ private:
 	const std::string mMsg;
 };
 
+} // namespace euter
 
 // Structure holding paramter information (BOOST PP Sequence format)
 // note value is "escaped" with an extra parenthese to support commas in
@@ -151,7 +154,7 @@ void get(const std::string & __name, const Visitor & __v) CONST {          \
     {                                                                      \
         std::string err("No such parameter '");                            \
         err += __name + "'";                                               \
-        throw  InvalidParameter(err);                                      \
+        throw euter::InvalidParameter(err);                                \
     }                                                                      \
 }                                                                          \
 
@@ -260,9 +263,12 @@ struct CLASS_NAME {                                                            \
 	}                                                                          \
 };                                                                             \
 
+namespace euter {
+
 struct DefaultVisitor
 {
 	template <typename Parameter>
 	void operator()(Parameter const& /*p*/) const {}
 };
 
+} // namespace euter

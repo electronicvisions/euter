@@ -2,6 +2,8 @@
 
 #include "connector.h"
 
+namespace euter {
+
 class FixedNumberPostConnector : public Connector
 {
 public:
@@ -34,4 +36,6 @@ private:
 	}
 };
 
-BOOST_CLASS_EXPORT_KEY(FixedNumberPostConnector)
+} // namespace euter
+
+BOOST_CLASS_EXPORT_KEY(euter::FixedNumberPostConnector)

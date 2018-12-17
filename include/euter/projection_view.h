@@ -3,6 +3,8 @@
 #include "connector.h"
 #include "population_view.h"
 
+namespace euter {
+
 class Projection;
 
 class ProjectionView
@@ -62,3 +64,5 @@ void ProjectionView::serialize(Archiver& ar, const unsigned int)
 	   & BOOST_SERIALIZATION_NVP(mSourceRange)
 	   & BOOST_SERIALIZATION_NVP(mTargetRange);
 }
+
+} // namespace euter

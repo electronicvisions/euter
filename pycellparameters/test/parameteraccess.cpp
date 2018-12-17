@@ -9,6 +9,7 @@
 #include "pycellparameters/getparametervector.h"
 #include "pycellparameters/pyparameteraccess.h"
 
+using namespace euter;
 namespace bp = boost::python;
 
 namespace

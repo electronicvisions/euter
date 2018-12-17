@@ -22,6 +22,8 @@ void LOG4CXX_WARN(std::string prefix, Args&&... args)
 }
 #endif
 
+namespace euter {
+
 FixedNumberPreConnector::FixedNumberPreConnector() :
     mN(0),
     mAllowSelfConnections(true)
@@ -88,4 +90,6 @@ void FixedNumberPreConnector::printOn(std::ostream& o) const
 	o << "FixedNumberPreConnector";
 }
 
-BOOST_CLASS_EXPORT_IMPLEMENT(FixedNumberPreConnector)
+} // namespace euter
+
+BOOST_CLASS_EXPORT_IMPLEMENT(euter::FixedNumberPreConnector)

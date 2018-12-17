@@ -2,6 +2,8 @@
 
 #include "boost/serialization/serialization.h"
 
+namespace euter {
+
 struct Point3d
 {
 	double x,y,z;
@@ -18,3 +20,5 @@ inline void Point3d::serialize(Archiver& ar, const unsigned int& /*version*/)
 	   & BOOST_SERIALIZATION_NVP(y)
 	   & BOOST_SERIALIZATION_NVP(z);
 }
+
+} // namespace euter

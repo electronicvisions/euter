@@ -5,6 +5,8 @@
 #include "random.h"
 #include "nativerandomgenerator.h"
 
+namespace euter {
+
 class NativeRandomDistribution : public RandomDistribution
 {
 public:
@@ -33,8 +35,12 @@ private:
 	friend class boost::serialization::access;
 };
 
-BOOST_SERIALIZATION_ASSUME_ABSTRACT(NativeRandomDistribution)
-BOOST_CLASS_EXPORT_KEY(NativeRandomDistribution)
+} // namespace euter
+
+BOOST_SERIALIZATION_ASSUME_ABSTRACT(euter::NativeRandomDistribution)
+BOOST_CLASS_EXPORT_KEY(euter::NativeRandomDistribution)
+
+namespace euter {
 
 template <typename Dist>
 class NativeRandomDistributionImpl : public NativeRandomDistribution
@@ -132,6 +138,8 @@ private:
 	friend class boost::serialization::access;
 };
 
+} // namespace euter
+
 // LOAD Boost Preprocessor Macrons
 #define INIT 1
 #include "nativerandomdistributions_pp.h"
@@ -200,5 +208,3 @@ NATIVE_DISTRIBUTION(NativeExponentialDistribution, std::exponential_distribution
 //piecewise_constant_distribution
 
 //piecewise_linear_distribution
-
-

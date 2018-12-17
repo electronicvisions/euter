@@ -6,6 +6,8 @@
 
 #include "euter/objectstore.h"
 
+namespace euter {
+
 void CurrentSource::inject_into(const boost::shared_ptr<Assembly>& target)
 {
 	if(mTarget == 0)
@@ -42,8 +44,6 @@ bool DCSource::operator==(const CurrentSource& right) const
 		&& mStop == right_ptr->mStop;
 }
 
-BOOST_CLASS_EXPORT_IMPLEMENT(DCSource)
-
 CurrentSourcePtr StepCurrentSource::create(ObjectStore& store, ublas::vector<double> times, ublas::vector<double> amplitudes)
 {
 	CurrentSourcePtr source = boost::make_shared<StepCurrentSource>(times, amplitudes);
@@ -66,8 +66,6 @@ bool StepCurrentSource::operator==(const CurrentSource& right) const
 		&& mAmplitudes.size() == right_ptr->mAmplitudes.size()
 	    && ublas::norm_2(mAmplitudes - right_ptr->mAmplitudes) == 0;
 }
-
-BOOST_CLASS_EXPORT_IMPLEMENT(StepCurrentSource)
 
 CurrentSourcePtr ACSource::create(ObjectStore& store, 
 				   double amplitude,
@@ -116,8 +114,6 @@ bool ACSource::operator==(const CurrentSource& right) const
 		&& mStop == right_ptr->mStop;
 }
 
-BOOST_CLASS_EXPORT_IMPLEMENT(ACSource)
-
 CurrentSourcePtr NoisyCurrentSource::create(ObjectStore& store,
 									   double mean,
 									   double stdev,
@@ -156,4 +152,9 @@ bool NoisyCurrentSource::operator==(const CurrentSource& right) const
 		&& mStop == right_ptr->mStop;
 }
 
-BOOST_CLASS_EXPORT_IMPLEMENT(NoisyCurrentSource)
+} // namespace euter
+
+BOOST_CLASS_EXPORT_IMPLEMENT(euter::DCSource)
+BOOST_CLASS_EXPORT_IMPLEMENT(euter::StepCurrentSource)
+BOOST_CLASS_EXPORT_IMPLEMENT(euter::ACSource)
+BOOST_CLASS_EXPORT_IMPLEMENT(euter::NoisyCurrentSource)

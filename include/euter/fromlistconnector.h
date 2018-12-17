@@ -2,6 +2,8 @@
 
 #include "connector.h"
 
+namespace euter {
+
 class FromListConnector : public Connector
 {
 public:
@@ -45,4 +47,6 @@ inline void FromListConnector::Connection::serialize(Archiver& ar, const unsigne
 	   & BOOST_SERIALIZATION_NVP(to);
 }
 
-BOOST_CLASS_EXPORT_KEY(FromListConnector)
+} // namespace euter
+
+BOOST_CLASS_EXPORT_KEY(euter::FromListConnector)

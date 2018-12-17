@@ -103,10 +103,12 @@ ParameterProxy getParameterProxy(CellParameters & p)
 	return ParameterProxy(std::move(proxy));
 }
 
+namespace euter {
 class PopulationView;
+} // namespace euter
 
-ParameterProxy getPyParameter(PopulationView & p, size_t index);
-const ParameterProxy getPyParameter(const PopulationView & p, size_t index);
+ParameterProxy getPyParameter(euter::PopulationView & p, size_t index);
+const ParameterProxy getPyParameter(const euter::PopulationView & p, size_t index);
 
-std::vector<ParameterProxy> getPyParameterVector(PopulationView & p);
-const std::vector<ParameterProxy> getPyParameterVector(const PopulationView & p);
+std::vector<ParameterProxy> getPyParameterVector(euter::PopulationView & p);
+const std::vector<ParameterProxy> getPyParameterVector(const euter::PopulationView & p);

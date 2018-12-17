@@ -7,6 +7,8 @@
 #include "celltypes.h"
 #include "point.h"
 
+namespace euter {
+
 /// Bass class for holding a vector of cell parameters
 /// @note If you want to serialize this class you have to do it manually, because
 /// the derivated classes are templates. In this case the BOOST_CLASS_EXPORT_..
@@ -46,6 +48,8 @@ void CellParameterVector::serialize(Archiver & ar, const unsigned int & )
 	ar & BOOST_SERIALIZATION_NVP(mPositions);
 }
 
+} // namespace euter
+
 //BOOST_SERIALIZATION_FACTORY_1(CellParameterVector, size_t)
-BOOST_SERIALIZATION_ASSUME_ABSTRACT(CellParameterVector)
-BOOST_CLASS_EXPORT_KEY(CellParameterVector)
+BOOST_SERIALIZATION_ASSUME_ABSTRACT(euter::CellParameterVector)
+BOOST_CLASS_EXPORT_KEY(euter::CellParameterVector)

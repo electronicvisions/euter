@@ -7,6 +7,7 @@
 #include "euter/objectstore.h"
 #include "euter/nativerandomgenerator.h"
 
+using namespace euter;
 using testing::StaticAssertTypeEq;
 using boost::make_shared;
 

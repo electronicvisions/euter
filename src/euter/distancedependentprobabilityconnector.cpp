@@ -6,6 +6,8 @@
 #include "euter/assembly.h"
 #include "euter/nativerandomgenerator.h"
 
+namespace euter {
+
 DistanceDependentProbabilityConnector::DistanceDependentProbabilityConnector(
 	boost::shared_ptr<ProbabilityGenerator> const& probability_generator,
 	const bool allow_self_connections,
@@ -70,4 +72,6 @@ DistanceDependentProbabilityConnector::DistanceDependentProbabilityConnector() :
 	mProbabilityGenerator()
 {}
 
-BOOST_CLASS_EXPORT_IMPLEMENT(DistanceDependentProbabilityConnector)
+} // namespace euter
+
+BOOST_CLASS_EXPORT_IMPLEMENT(euter::DistanceDependentProbabilityConnector)

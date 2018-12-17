@@ -6,6 +6,8 @@
 #include "boost/serialization/ublas.hpp"
 #include "random.h"
 
+namespace euter {
+
 namespace ublas = boost::numeric::ublas;
 
 struct ConnectorTypes
@@ -31,3 +33,5 @@ struct ConnectorTypes
 	         boost::shared_ptr<RandomDistribution>
 	>                                                 default_type;
 };
+
+} // namespace euter

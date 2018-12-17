@@ -23,6 +23,8 @@ void LOG4CXX_INFO(std::string prefix, Args&&... args)
 }
 #endif
 
+namespace euter {
+
 namespace {
 template<typename Container>
 void _print(std::ostream& os, Container const& c)
@@ -227,3 +229,5 @@ std::string MetaDataToString::operator()(std::string const& metadata) const
 {
 	return metadata;
 }
+
+} // namespace euter

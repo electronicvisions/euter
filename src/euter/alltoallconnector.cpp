@@ -1,5 +1,7 @@
 #include "euter/alltoallconnector.h"
 
+namespace euter {
+
 void AllToAllConnector::printOn(std::ostream& o) const
 {
 	o << "AllToAllConnector";
@@ -34,4 +36,6 @@ size_t AllToAllConnector::connect(
 	}
 }
 
-BOOST_CLASS_EXPORT_IMPLEMENT(AllToAllConnector)
+} // namespace euter
+
+BOOST_CLASS_EXPORT_IMPLEMENT(euter::AllToAllConnector)

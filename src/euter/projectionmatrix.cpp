@@ -8,6 +8,7 @@
 #include "euter/exceptions.h"
 #include "euter/random.h"
 
+namespace euter {
 
 class ProjectionMatrix::InitDefaultMatrixVisitor : public boost::static_visitor<void>
 {
@@ -138,3 +139,5 @@ void ProjectionMatrix::throwSizeError(size_t size1, size_t size2)
             << ", got (" << size1 << ", " << size2 << ")";
     throw InvalidDimensions(message.str());
 }
+
+} // namespace euter

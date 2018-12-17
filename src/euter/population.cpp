@@ -6,6 +6,8 @@
 #include "euter/space.h"
 #include "euter/objectstore.h"
 
+namespace euter {
+
 Population::Population(
 	ObjectStore& store,
 	size_t const size,
@@ -166,3 +168,5 @@ void Population::reset() {
 
 	// TODO: clear other recorded data
 }
+
+} // namespace euter

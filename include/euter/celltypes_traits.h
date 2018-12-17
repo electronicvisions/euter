@@ -4,6 +4,8 @@
 #include "celltypes.h"
 #include "cellparameters.h"
 
+namespace euter {
+
 // SJ: was hast du dir dabei gedacht lieber Herr Koke? Why not autogenerate this
 // the mapping crom CellType to PyNNParametes via boost PP?
 
@@ -105,3 +107,5 @@ struct CellTypeTraits<CellType::SpikeSourcePoisson> : CommonCellTypeTraits
 	static_assert(boost::has_trivial_copy<Parameters>::value,
 				  "Paramters should be trivially copyable");
 };
+
+} // namespace euter

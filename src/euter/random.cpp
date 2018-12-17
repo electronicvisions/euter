@@ -4,8 +4,10 @@
 #include <memory>
 #include <boost/make_shared.hpp>
 
-BOOST_CLASS_EXPORT_IMPLEMENT(RandomGenerator)
-BOOST_CLASS_EXPORT_IMPLEMENT(RandomDistribution)
+BOOST_CLASS_EXPORT_IMPLEMENT(euter::RandomGenerator)
+BOOST_CLASS_EXPORT_IMPLEMENT(euter::RandomDistribution)
+
+namespace euter {
 
 RandomGenerator::~RandomGenerator()
 {}
@@ -60,3 +62,5 @@ void RandomDistribution::setBoundaries(distribution_float_t, distribution_float_
 {
 	throw std::runtime_error("Invalid value type");
 }
+
+} // namespace euter

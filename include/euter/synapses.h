@@ -1,8 +1,11 @@
 #pragma once
 
 #include "parameter.h"
+#include <boost/shared_ptr.hpp>
 #include <boost/make_shared.hpp>
 #include <typeinfo>
+
+namespace euter {
 
 struct GetterVisitor
 {
@@ -19,6 +22,8 @@ struct GetterVisitor
 	mutable double mP;
 };
 
+} // namespace euter
+
 #ifndef PYPLUSPLUS
 #define HASH_FUN() \
 	size_t hash() const                                                        \
@@ -30,6 +35,7 @@ struct GetterVisitor
 #endif
 
 #define SERIALIZABLE_PARAMETERIZED_STRUCT(CLASS_NAME, BASE_NAME, ...)          \
+namespace euter {                                                              \
 struct CLASS_NAME : BASE_NAME                                                  \
 {                                                                              \
 	PARAMETER_STRUCT(Parameters, __VA_ARGS__)                                  \
@@ -71,7 +77,10 @@ private:                                                                       \
 		   & BOOST_SERIALIZATION_NVP(mParams);                                 \
 	}                                                                          \
 };                                                                             \
-BOOST_CLASS_EXPORT_KEY(CLASS_NAME)
+} /* namespace euter */                                                        \
+BOOST_CLASS_EXPORT_KEY(euter::CLASS_NAME)
+
+namespace euter {
 
 struct ShortTermPlasticityMechanism
 {
@@ -92,21 +101,24 @@ private:
 	}  
 };
 
+} // namespace euter
+
 #ifndef PYPLUSPLUS
 namespace std {
 	template <>
-	struct hash<ShortTermPlasticityMechanism>
+	struct hash<euter::ShortTermPlasticityMechanism>
 	{
-		typedef ShortTermPlasticityMechanism argument_type;
+		typedef euter::ShortTermPlasticityMechanism argument_type;
 		typedef std::size_t  result_type;
 
-		result_type operator()(ShortTermPlasticityMechanism const & t) const
+		result_type operator()(euter::ShortTermPlasticityMechanism const & t) const
 		{
 			return t.hash();
 		}
 	};
 }
 #endif
+
 
 SERIALIZABLE_PARAMETERIZED_STRUCT(TsodyksMarkramMechanism, ShortTermPlasticityMechanism,
 	PARAMETER(double, U, 0.5),
@@ -116,6 +128,8 @@ SERIALIZABLE_PARAMETERIZED_STRUCT(TsodyksMarkramMechanism, ShortTermPlasticityMe
 	PARAMETER(double, x0, 1.0),
 	PARAMETER(double, y0, 0.0)
 	)
+
+namespace euter {
 
 struct STDPWeightDependence
 {
@@ -129,6 +143,8 @@ private:
 	{
 	}  
 };
+
+} // namespace euter
 
 SERIALIZABLE_PARAMETERIZED_STRUCT(AdditiveWeightDependence, STDPWeightDependence,
 	PARAMETER(double, w_min, 0.0),
@@ -160,6 +176,8 @@ SERIALIZABLE_PARAMETERIZED_STRUCT(GutigWeightDependence, STDPWeightDependence,
 	PARAMETER(double, mu_minus, 0.5)
 	)
 
+namespace euter {
+
 struct STDPTimingDependence
 {
 	virtual ~STDPTimingDependence() {}
@@ -173,11 +191,15 @@ private:
 	}  
 };
 
+} // namespace euter
+
 SERIALIZABLE_PARAMETERIZED_STRUCT(SpikePairRule, STDPTimingDependence,
 	PARAMETER(double, tau_plus, 20.0),
 	PARAMETER(double, tau_minus, 20.0)
 	)
-	
+
+namespace euter {
+
 struct STDPMechanism
 {
 	STDPMechanism(
@@ -245,3 +267,5 @@ private:
 		   & BOOST_SERIALIZATION_NVP(mSlow);
 	}
 };
+
+} // namespace euter

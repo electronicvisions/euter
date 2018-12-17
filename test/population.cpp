@@ -5,6 +5,7 @@
 #include "euter/objectstore.h"
 #include "euter/projection.h"
 
+using namespace euter;
 using testing::StaticAssertTypeEq;
 
 TEST(Population, BasicCheck) {

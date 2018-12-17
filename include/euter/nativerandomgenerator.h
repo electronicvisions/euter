@@ -6,6 +6,8 @@
 
 #include "euter/random.h"
 
+namespace euter {
+
 // TODO we could template it to support more native rngs
 class NativeRandomGenerator : public RandomGenerator
 {
@@ -79,7 +81,9 @@ void NativeRandomGenerator::load(Archiver& ar, const unsigned int& /*version*/)
 	setState(state);
 }
 
-BOOST_CLASS_EXPORT_KEY(NativeRandomGenerator)
+} // namespace euter
+
+BOOST_CLASS_EXPORT_KEY(euter::NativeRandomGenerator)
 
 // TODO
 // #include "boost_python_fwd.h"

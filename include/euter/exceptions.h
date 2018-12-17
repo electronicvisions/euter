@@ -5,6 +5,8 @@
 #include <sstream>
 #include <iostream>
 
+namespace euter {
+
 /* Not-supported-on-hardware exception */
 class NotSupportedOnHW : public std::exception {
 public:
@@ -52,8 +54,6 @@ private:
     const std::string mMsg;
 };
 
-#define NOT_IMPLEMENTED() do { throw NotImplemented( __FILE__, __PRETTY_FUNCTION__, __LINE__ ); } while(0)
-
 class InvalidDimensions : public std::exception
 {
 public:
@@ -68,3 +68,7 @@ public:
 private:
     std::string message;
 };
+
+} // namespace euter
+
+#define NOT_IMPLEMENTED() do { throw euter::NotImplemented( __FILE__, __PRETTY_FUNCTION__, __LINE__ ); } while(0)

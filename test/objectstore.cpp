@@ -2,6 +2,7 @@
 
 #include "euter/objectstore.h"
 
+using namespace euter;
 using testing::StaticAssertTypeEq;
 
 TEST(Objectstore, Reset) {

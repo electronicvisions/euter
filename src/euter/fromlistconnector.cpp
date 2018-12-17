@@ -3,6 +3,8 @@
 
 #include <sstream>
 
+namespace euter {
+
 FromListConnector::FromListConnector()
 {
 }
@@ -45,5 +47,6 @@ size_t FromListConnector::connect(
 	return mConnections.size();
 }
 
-BOOST_CLASS_EXPORT_IMPLEMENT(FromListConnector)
+} // namespace euter
 
+BOOST_CLASS_EXPORT_IMPLEMENT(euter::FromListConnector)

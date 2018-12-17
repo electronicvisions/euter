@@ -22,6 +22,8 @@ void LOG4CXX_WARN(std::string prefix, Args&&... args)
 }
 #endif
 
+namespace euter {
+
 FixedNumberPostConnector::FixedNumberPostConnector() :
     mN(0),
     mAllowSelfConnections(true)
@@ -74,4 +76,6 @@ void FixedNumberPostConnector::printOn(std::ostream& o) const
 	o << "FixedNumberPostConnector";
 }
 
-BOOST_CLASS_EXPORT_IMPLEMENT(FixedNumberPostConnector)
+} // namespace euter
+
+BOOST_CLASS_EXPORT_IMPLEMENT(euter::FixedNumberPostConnector)

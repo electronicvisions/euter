@@ -4,6 +4,8 @@
 
 #include "population_view.h"
 
+namespace euter {
+
 class Assembly
 {
 public:
@@ -61,3 +63,5 @@ inline void Assembly::serialize(Archiver& ar, const unsigned int& /*version*/)
 	   & BOOST_SERIALIZATION_NVP(mLabel)
 	   & BOOST_SERIALIZATION_NVP(mMembers);
 }
+
+} // namespace euter

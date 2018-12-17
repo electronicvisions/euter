@@ -2,6 +2,8 @@
 
 #include "connector.h"
 
+namespace euter {
+
 class FixedProbabilityConnector : public Connector
 {
 public:
@@ -35,4 +37,6 @@ private:
 		}
 };
 
-BOOST_CLASS_EXPORT_KEY(FixedProbabilityConnector)
+} // namespace euter
+
+BOOST_CLASS_EXPORT_KEY(euter::FixedProbabilityConnector)

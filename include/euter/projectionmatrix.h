@@ -2,6 +2,8 @@
 
 #include "connector.h"
 
+namespace euter {
+
 class RandomGenerator;
 
 // mixing for book keeping of weights/delays in case of non-file-dependent
@@ -107,3 +109,5 @@ void ProjectionMatrix::set(const boost::numeric::ublas::matrix<T, L, A> & in)
 		++i_out;
 	}
 }
+
+} // namespace euter

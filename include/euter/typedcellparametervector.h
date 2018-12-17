@@ -2,6 +2,8 @@
 
 #include "cellparametervector.h"
 
+namespace euter {
+
 template <CellType _Type>
 class TypedCellParameterVector : public CellParameterVector
 {
@@ -98,3 +100,5 @@ visitCellParameterVector(const CellParameterVector & p, Visitor const& v, Args &
 }
 
 #undef DO_VISITOR_CALL
+
+} // namespace euter

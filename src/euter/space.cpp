@@ -4,6 +4,8 @@
 #include <cmath>
 #include <random>
 
+namespace euter {
+
 Space::Space() : Space(
 		std::bitset<3>(Axis::X | Axis::Y | Axis::Z),
 		1.0,
@@ -287,3 +289,5 @@ ublas::vector<SpatialTypes::coord_type> RandomStructure::_generatePositions(size
 
 	return positions;
 }
+
+} // namespace euter

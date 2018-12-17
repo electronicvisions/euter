@@ -4,6 +4,7 @@
 #include "euter/population.h"
 #include "euter/population_view.h"
 
+using namespace euter;
 
 ParameterProxy getPyParameter(PopulationView & view, size_t index)
 {

@@ -2,6 +2,8 @@
 
 #include "connector.h"
 
+namespace euter {
+
 class FixedNumberPreConnector : public Connector
 {
 public:
@@ -34,4 +36,6 @@ private:
 	}
 };
 
-BOOST_CLASS_EXPORT_KEY(FixedNumberPreConnector)
+} // namespace euter
+
+BOOST_CLASS_EXPORT_KEY(euter::FixedNumberPreConnector)

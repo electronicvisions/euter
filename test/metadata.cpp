@@ -3,6 +3,8 @@
 
 #include "euter/metadata.h"
 
+using namespace euter;
+
 // Example metadata class :)
 struct X : DerivedMetaData<X>
 {

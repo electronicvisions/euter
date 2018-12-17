@@ -8,6 +8,8 @@
 
 #include <boost/weak_ptr.hpp>
 
+namespace euter {
+
 class PopulationView
 {
 public:
@@ -64,3 +66,5 @@ inline void PopulationView::serialize(Archiver& ar, const unsigned int& )
 	ar & make_nvp("size", const_cast<size_t&>(mSize));
 	ar & make_nvp("label", mLabel);
 }
+
+} // namespace euter

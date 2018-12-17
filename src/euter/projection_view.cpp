@@ -1,6 +1,8 @@
 #include "euter/projection_view.h"
 #include "euter/projection.h"
 
+namespace euter {
+
 ProjectionView::ProjectionView(
 	population_type const pre,
 	population_type const post,
@@ -84,3 +86,5 @@ std::ostream& ProjectionView::operator<<(std::ostream& o) const
 	//o << ")";
 	return o;
 }
+
+} // namespace euter

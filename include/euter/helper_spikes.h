@@ -11,6 +11,7 @@
 #endif
 
 
+namespace euter {
 
 /* Spikes */
 typedef double spiketime_t; // (experiment-)global spike time (bio, in seconds)
@@ -47,3 +48,5 @@ private:
 
 // spikelist: index, []
 typedef std::vector<std::pair<neuronindex_t, SpikeTrain> > spikelist_t;
+
+} // namespace euter

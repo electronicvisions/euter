@@ -5,6 +5,8 @@
 #include "euter/random.h"
 #include "euter/random_traits.h"
 
+namespace euter {
+
 FixedProbabilityConnector::FixedProbabilityConnector(
         double       const p_connect,
         bool         const allow_self_connections,
@@ -49,4 +51,6 @@ void FixedProbabilityConnector::printOn(std::ostream& o) const
 	o << "FixedProbabilityConnector";
 }
 
-BOOST_CLASS_EXPORT_IMPLEMENT(FixedProbabilityConnector)
+} // namespace euter
+
+BOOST_CLASS_EXPORT_IMPLEMENT(euter::FixedProbabilityConnector)

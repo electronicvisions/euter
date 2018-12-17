@@ -4,6 +4,8 @@
 
 #include "euter/typedcellparametervector.h"
 
+namespace euter {
+
 namespace
 {
 
@@ -72,4 +74,6 @@ const std::vector<Point3d> & CellParameterVector::positions() const
 	return mPositions;
 }
 
-BOOST_CLASS_EXPORT_IMPLEMENT(CellParameterVector)
+} // namespace euter
+
+BOOST_CLASS_EXPORT_IMPLEMENT(euter::CellParameterVector)

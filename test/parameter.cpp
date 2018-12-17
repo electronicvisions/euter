@@ -2,6 +2,7 @@
 
 #include "euter/celltypes_traits.h"
 
+using namespace euter;
 using namespace PyNNParameters;
 
 TEST(Parameter, EIF_cond_exp_isfa_ista_DEFAULT)

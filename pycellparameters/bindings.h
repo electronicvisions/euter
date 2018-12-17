@@ -3,6 +3,8 @@
 #ifndef PYPLUSPLUS
 #include "pycellparameters/pyparameteraccess.h"
 
+namespace euter {
+
 template <typename CellParameters>
 struct CellParametersConstructors
 {
@@ -20,4 +22,5 @@ struct CellParametersConstructors
 	}
 };
 
+} // namespace euter
 #endif

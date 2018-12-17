@@ -4,6 +4,8 @@
 #include <boost/serialization/serialization.hpp>
 #include "assembly.h"
 
+namespace euter {
+
 class ObjectStore;
 class CurrentSource;
 
@@ -59,7 +61,6 @@ private:
 	}
 };
 
-BOOST_CLASS_EXPORT_KEY(DCSource)
 
 class StepCurrentSource : public CurrentSource
 {
@@ -86,7 +87,6 @@ private:
 	}
 };
 
-BOOST_CLASS_EXPORT_KEY(StepCurrentSource)
 
 class ACSource : public CurrentSource
 {
@@ -129,7 +129,6 @@ private:
 	}
 };
 
-BOOST_CLASS_EXPORT_KEY(ACSource)
 
 class NoisyCurrentSource : public CurrentSource
 {
@@ -168,4 +167,9 @@ private:
 	}
 };
 
-BOOST_CLASS_EXPORT_KEY(NoisyCurrentSource)
+} // namespace euter
+
+BOOST_CLASS_EXPORT_KEY(euter::DCSource)
+BOOST_CLASS_EXPORT_KEY(euter::StepCurrentSource)
+BOOST_CLASS_EXPORT_KEY(euter::ACSource)
+BOOST_CLASS_EXPORT_KEY(euter::NoisyCurrentSource)

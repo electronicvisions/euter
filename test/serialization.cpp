@@ -29,6 +29,7 @@
 #include "euter/projection.h"
 #include "test_utils.h"
 
+using namespace euter;
 using boost::serialization::make_nvp;
 
 typedef std::tuple<boost::archive::xml_iarchive, boost::archive::xml_oarchive> XMLArchives;

@@ -26,7 +26,7 @@ for ns in ['::boost::serialization', '::boost::archive', '::boost::mpi']:
 ns = mb.namespace("::PyNNParameters")
 ns.include()
 
-dict_constructor = 'def( "__init__", boost::python::make_constructor(&CellParametersConstructors< {} >::from_dict))'
+dict_constructor = 'def( "__init__", boost::python::make_constructor(&euter::CellParametersConstructors< {} >::from_dict))'
 for c in ns.classes(allow_empty=True):
     c.add_registration_code(dict_constructor.format(c.decl_string))
 

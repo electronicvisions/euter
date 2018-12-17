@@ -8,6 +8,8 @@
 
 #include "euter/class_name.h"
 
+namespace euter {
+
 class MetaData;
 typedef boost::shared_ptr<MetaData> MetaDataPtr;
 
@@ -88,3 +90,5 @@ public:
 	DerivedMetaData(DerivedMetaData const&) = default;
 #endif
 };
+
+} // namespace euter

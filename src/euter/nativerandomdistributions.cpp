@@ -2,4 +2,4 @@
 
 #include "euter/nativerandomdistributions.h"
 
-BOOST_CLASS_EXPORT_IMPLEMENT(NativeRandomDistribution)
+BOOST_CLASS_EXPORT_IMPLEMENT(euter::NativeRandomDistribution)

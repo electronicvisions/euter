@@ -9,6 +9,8 @@
 
 #include "euter/nativerandomgenerator.h"
 
+namespace euter {
+
 Projection::Projection() {}
 
 Projection::Projection(
@@ -190,3 +192,5 @@ void Projection::reset()
 	// FIXME: reset delays although not requested in pynn API?
 	// mDelays.initDefaultValues(mMethod->getDefaultDelays());
 }
+
+} // namespace euter

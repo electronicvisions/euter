@@ -23,6 +23,7 @@
 #endif
 
 #define NATIVE_DISTRIBUTION(NAME, TYPE, RETURN_TYPE, ...)                   \
+namespace euter {                                                           \
 struct NAME : NativeRandomDistributionImpl< TYPE <RETURN_TYPE> >            \
 {                                                                           \
 public:                                                                     \
@@ -45,7 +46,8 @@ private:                                                                    \
 	}                                                                       \
 	friend class boost::serialization::access;                              \
 };                                                                          \
-DO_EXPORT(NAME)
+} /* namespace euter */                                                     \
+DO_EXPORT(euter::NAME)
 
 #endif
 

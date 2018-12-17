@@ -1,6 +1,8 @@
 #include "euter/onetooneconnector.h"
 #include "euter/assembly.h"
 
+namespace euter {
+
 OneToOneConnector::OneToOneConnector(
         const bool allow_self_connections,
         const default_type & weights,
@@ -36,4 +38,6 @@ void OneToOneConnector::printOn(std::ostream& o) const
 	o << "OneToOneConnector";
 }
 
-BOOST_CLASS_EXPORT_IMPLEMENT(OneToOneConnector)
+} // namespace euter
+
+BOOST_CLASS_EXPORT_IMPLEMENT(euter::OneToOneConnector)

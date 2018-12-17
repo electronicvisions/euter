@@ -3,6 +3,8 @@
 #include "euter/population.h"
 #include "euter/typedcellparametervector.h"
 
+namespace euter {
+
 PopulationView::PopulationView() :
     mSize(0)
 {
@@ -109,3 +111,5 @@ bool PopulationView::operator!=(const PopulationView& right) const
 {
 	return !(*this == right);
 }
+
+} // namespace euter

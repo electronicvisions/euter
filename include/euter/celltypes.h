@@ -24,6 +24,8 @@ IF_curr_exp, IF_facets_hardware1, IF_brainscales_hardware, \
 SpikeSourceArray, SpikeSourceInhGamma, SpikeSourcePoisson, \
 IF_multicond_exp, EIF_multicond_exp_isfa_ista)
 
+namespace euter {
+
 enum class CellType : size_t
 {
 	BOOST_PP_SEQ_ENUM(CELL_TYPE_SEQ)
@@ -83,5 +85,7 @@ struct RegisterCellTypeForSerializationVisitor
 
 	Archiver & ar;
 };
+
+} // namespace euter
 
 #include "celltypes_traits.h"

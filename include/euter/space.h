@@ -13,6 +13,8 @@
 #include "boost/serialization/ublas.hpp"
 
 
+namespace euter {
+
 // FIXME: Space objects need serialization code and serialization EXPORTS,
 // otherwise population serialization does not properly work.
 
@@ -179,3 +181,5 @@ private:
 
 	boost::shared_ptr<Shape> mShape;
 };
+
+} // namespace euter

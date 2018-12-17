@@ -11,6 +11,7 @@
 #include "euter/projection.h"
 #include "euter/objectstore.h"
 
+using namespace euter;
 using boost::make_shared;
 
 class Connectors : public ::testing::Test

@@ -14,6 +14,8 @@
 #include "parameter.h"
 #include "metadata.h"
 
+namespace euter {
+
 /// This singleton keeps track of pynn objects created. It allows serialization
 /// to send pynn objects
 /// @note currently not threadsafe
@@ -219,3 +221,5 @@ boost::shared_ptr<T> MetaDataFromString<T>::operator()(std::string const& metada
 	ret->fromString(metadata);
 	return ret;
 }
+
+} // namespace euter

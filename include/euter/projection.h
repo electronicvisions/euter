@@ -9,7 +9,10 @@
 #include "projectionmatrix.h"
 #include "projection_view.h"
 
+#include <boost/shared_ptr.hpp>
 #include <boost/enable_shared_from_this.hpp>
+
+namespace euter {
 
 class ObjectStore;
 class Projection;
@@ -119,3 +122,5 @@ void Projection::serialize(Archiver& ar, const unsigned int) {
 	   & BOOST_SERIALIZATION_NVP(mWeigths)
 	   & BOOST_SERIALIZATION_NVP(mRng);
 }
+
+} // namespace euter

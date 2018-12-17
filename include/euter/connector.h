@@ -8,6 +8,8 @@
 
 #include "assembly.h"
 
+namespace euter {
+
 class RandomGenerator;
 
 class Connector : public ConnectorTypes
@@ -54,8 +56,10 @@ private:
 	}
 };
 
-BOOST_SERIALIZATION_ASSUME_ABSTRACT(Connector)
-BOOST_CLASS_EXPORT_KEY(Connector)
+} // namespace euter
+
+BOOST_SERIALIZATION_ASSUME_ABSTRACT(euter::Connector)
+BOOST_CLASS_EXPORT_KEY(euter::Connector)
 
 // TODO: Implement class Space first!
 //class DistanceDependentProbabilityConnector : public Connector

@@ -2,6 +2,7 @@
 
 #include <algorithm>
 
+namespace euter {
 
 SpikeTrain::SpikeTrain()
 :
@@ -20,7 +21,6 @@ SpikeTrain::SpikeTrain(
 	mTstop = times.back();
 }
 
-
 SpikeTrain::SpikeTrain(
 	spiketimes_t times,
 	spiketime_t t_stop,
@@ -30,3 +30,5 @@ SpikeTrain::SpikeTrain(
 	mTstop(t_stop),
 	mTimes(times)
 {}
+
+} // namespace euter
