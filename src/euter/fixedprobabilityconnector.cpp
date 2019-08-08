@@ -1,6 +1,7 @@
 #include "euter/fixedprobabilityconnector.h"
 
 #include <random>
+#include "euter/nativerandomgenerator.h"
 #include "euter/random.h"
 #include "euter/random_traits.h"
 
@@ -26,21 +27,17 @@ size_t FixedProbabilityConnector::connect(
 {
 	size_t elements = 0;
 	std::uniform_real_distribution<distribution_float_t> dis(0, 1);
+	NativeRandomGenerator localrnd(rnd.seed());
 
 	auto it = matrix.data().begin();
 	auto iend = matrix.data().end();
 	for(; it != iend; ++it)
 	{
-		if ((mP > dis(rnd))
-				&& !(!mAllowSelfConnections
-					&& pre == post
-					&& (it - matrix.data().begin()) % (matrix.size2() + 1) == 0))
-		{
+		if ((mP > dis(localrnd)) && !(!mAllowSelfConnections && pre == post &&
+		                              (it - matrix.data().begin()) % (matrix.size2() + 1) == 0)) {
 			*it = 0.0;
 			++elements;
-		}
-		else
-		{
+		} else {
 			*it = std::numeric_limits<double>::quiet_NaN();
 		}
 	}

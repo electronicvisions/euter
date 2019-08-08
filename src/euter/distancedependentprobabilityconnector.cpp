@@ -4,6 +4,7 @@
 #include <random>
 
 #include "euter/assembly.h"
+#include "euter/nativerandomgenerator.h"
 
 DistanceDependentProbabilityConnector::DistanceDependentProbabilityConnector(
 	boost::shared_ptr<ProbabilityGenerator> const& probability_generator,
@@ -26,9 +27,10 @@ size_t DistanceDependentProbabilityConnector::connect(
     matrix_type & matrix) const
 {
     std::uniform_real_distribution<distribution_float_t> dis(0, 1);
+	NativeRandomGenerator localrnd(rnd.seed());
 
-    auto prePositions = pre.positions();
-    auto postPositions = post.positions();
+	auto prePositions = pre.positions();
+	auto postPositions = post.positions();
 	ublas::matrix<SpatialTypes::distance_type> distances =
 	    mSpace->distances(prePositions, postPositions);
 	ConnectorTypes::matrix_type probs = (*mProbabilityGenerator)(distances);
@@ -41,12 +43,12 @@ size_t DistanceDependentProbabilityConnector::connect(
 		size_t row_count = 0;
 
 		if (mNConnections != -1)
-			rnd.shuffle(pool);
+			localrnd.shuffle(pool);
 
 		for (size_t j = 0; j < pool.size(); j++) {
-			if (probs(i, pool[j]) > dis(rnd) &&
+			if (probs(i, pool[j]) > dis(localrnd) &&
 			    !(!mAllowSelfConnections && pre == post && i == pool[j]) &&
-			    (mNConnections == -1 || row_count < (unsigned)mNConnections)) {
+			    (mNConnections == -1 || row_count < (unsigned) mNConnections)) {
 				matrix(i, pool[j]) = 0.0;
 				row_count++;
 			} else {

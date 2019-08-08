@@ -16,11 +16,11 @@ public:
 	virtual ~RandomGenerator();
 	virtual result_type next() = 0;
 	virtual std::vector<result_type> next(result_type n) = 0;
-    
-    template<typename T>
-    std::vector<T> permutation(std::vector<T> v);
 
-    template<typename T>
+	template <typename T>
+	std::vector<T> permutation(std::vector<T> v);
+
+	template<typename T>
     void shuffle(std::vector<T> &v);
 
     template<typename T>
@@ -31,8 +31,9 @@ public:
 
 	virtual bool serializable() = 0;
 
-	virtual result_type min() const = 0;
-	virtual result_type max() const = 0;
+	/// NOT COMPATIBLE WITH C++ STANDARD, STATIC REQUIRED, VIRTUAL CANT BE OVERWRITTEN BY STATIC
+	//	virtual result_type min() const = 0;
+	//	virtual result_type max() const = 0;
 
 	// Returns a copy that will produce the same numbers again
 	virtual RandomGenerator * save() const = 0;
@@ -65,11 +66,12 @@ template<typename T>
 std::vector<T> RandomGenerator::draw(std::vector<T> w, int n)
 {
     using std::swap;
-    for(auto i=w.begin(); i<w.begin()+n; ++i)
-        swap(*i, i[next() % (w.end()-i)]);
-    
-    w.resize(n);
-    return w;
+	for (auto i = w.begin(); i < w.begin() + n; ++i) {
+		swap(*i, i[next() % (w.end() - i)]);
+	}
+
+	w.resize(n);
+	return w;
 }
 
 class RandomDistribution

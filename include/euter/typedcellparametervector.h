@@ -23,8 +23,7 @@ public:
 	virtual bool is_source() const
 	{ return CellTypeTraits<Type>::is_source; }
 
-	virtual bool supported() const
-	{ return CellTypeTraits<Type>::supported; }
+	virtual bool supported() const { return CellTypeTraits<Type>::supported(); }
 
 	std::vector<CellParameters> & parameters()
 	{ return mCellparams; }

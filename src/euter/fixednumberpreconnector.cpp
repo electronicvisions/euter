@@ -2,10 +2,25 @@
 
 #include <numeric>
 
-#include <log4cxx/logger.h>
-
 #include "euter/exceptions.h"
 #include "euter/assembly.h"
+
+#ifdef __linux__
+#include <log4cxx/logger.h>
+#else
+#include <iostream>
+namespace log4cxx {
+namespace Logger {
+typedef std::string getLogger;
+} // namespace log4cxx
+} // namespace Logger
+
+template <typename... Args>
+void LOG4CXX_WARN(std::string prefix, Args&&... args)
+{
+	(std::cout << prefix << ... << args);
+}
+#endif
 
 FixedNumberPreConnector::FixedNumberPreConnector() :
     mN(0),
@@ -28,9 +43,10 @@ size_t FixedNumberPreConnector::connect(
         RandomGenerator & rnd,
         matrix_type & matrix) const
 {
-	if(mN > (pre.size() - int(!mAllowSelfConnections)))
+	if (mN > (pre.size() - int(!mAllowSelfConnections))) {
 		LOG4CXX_WARN(log4cxx::Logger::getLogger("PyHMF"), "Multiple connections currently not supported! You may use multiple connectors instead.");
-    
+	}
+
 	size_t elements = 0;
     std::vector<size_t> pool(pre.size());
     std::iota(pool.begin(), pool.end(), 0);
@@ -39,8 +55,8 @@ size_t FixedNumberPreConnector::connect(
     {
         matrix_col_type col(matrix, ii);
         std::fill(col.begin(), col.end(), std::numeric_limits<double>::quiet_NaN());
-		
-        auto p = rnd.permutation(pool);
+
+		auto p = rnd.permutation(pool);
 		if(!mAllowSelfConnections && pre == post)
 			p.erase(std::find(p.begin(), p.end(), ii));
 

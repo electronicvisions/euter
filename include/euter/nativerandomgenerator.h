@@ -4,7 +4,7 @@
 #include <random>
 #include <string>
 
-#include "random.h"
+#include "euter/random.h"
 
 // TODO we could template it to support more native rngs
 class NativeRandomGenerator : public RandomGenerator
@@ -14,10 +14,9 @@ public:
 	static_assert(std::is_same<rng_type::result_type, result_type>::value, "");
 
 	NativeRandomGenerator() {}
-	NativeRandomGenerator(result_type seed) : mRng(seed) {}
+	NativeRandomGenerator(result_type seed) : mSeed(seed), mRng(seed) {}
 
-    virtual result_type next()
-	{ return mRng(); }
+	virtual result_type next() { return mRng(); }
 
 	virtual std::vector<result_type> next(result_type n)
 	{
@@ -35,11 +34,9 @@ public:
 	virtual bool serializable()
 	{ return true; }
 
-	virtual result_type min() const
-	{ return mRng.min(); }
+	static constexpr result_type min() { return rng_type::min(); }
 
-	virtual result_type max() const
-	{ return mRng.max(); }
+	static constexpr result_type max() { return rng_type::max(); }
 
 	RandomGenerator* save() const
 	{ return new NativeRandomGenerator(*this); }

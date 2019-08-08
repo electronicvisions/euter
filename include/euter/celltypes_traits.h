@@ -20,7 +20,6 @@ struct CellTypeTraits : CommonCellTypeTraits
 	PARAMETER_STRUCT(Parameters,
 	    PARAMETER(double, dummy, -1.1))
 
-	static const bool supported = false;
 };
 
 template<>

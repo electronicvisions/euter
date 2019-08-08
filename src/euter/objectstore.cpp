@@ -6,7 +6,21 @@
 
 #include <boost/variant/get.hpp>
 
+#ifdef __linux__
 #include <log4cxx/logger.h>
+#else
+namespace log4cxx {
+namespace Logger {
+typedef std::string getLogger;
+} // namespace log4cxx
+} // namespace Logger
+
+template <typename... Args>
+void LOG4CXX_INFO(std::string prefix, Args&&... args)
+{
+	(std::cout << prefix << ... << args);
+}
+#endif
 
 namespace {
 template<typename Container>
