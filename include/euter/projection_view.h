@@ -22,6 +22,7 @@ public:
 	~ProjectionView();
 	ProjectionView& operator=(ProjectionView const& other);
 	ProjectionView() = default;
+	ProjectionView(const ProjectionView&) = default;
 
 	population_type const& pre()  const;
 	population_type const& post() const;

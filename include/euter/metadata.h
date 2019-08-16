@@ -24,6 +24,11 @@ public:
 	{
 		return *this;
 	}
+
+#ifndef PYPLUSPLUS
+	MetaData() = default;
+	MetaData(MetaData const&) = default;
+#endif
 };
 
 template <typename T>
@@ -77,4 +82,9 @@ public:
 		*this = dynamic_cast<T const&>(m);
 		return *this;
 	}
+
+#ifndef PYPLUSPLUS
+	DerivedMetaData() = default;
+	DerivedMetaData(DerivedMetaData const&) = default;
+#endif
 };
