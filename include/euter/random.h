@@ -1,6 +1,7 @@
 #pragma once
 
 #include <algorithm>
+#include <random>
 
 #include "boost/serialization/serialization.h"
 #include "random_traits.h"
@@ -45,12 +46,13 @@ private:
 	friend class boost::serialization::access;
 	template<typename Archiver>
 	void serialize(Archiver& , const unsigned int &) {}
+	std::mt19937 m_rng;
 };
 
 template<typename T>
 void RandomGenerator::shuffle(std::vector<T> &v)
 {
-    std::random_shuffle(v.begin(), v.end(), [this](unsigned n) { return next() % n; });
+	std::shuffle(v.begin(), v.end(), m_rng);
 }
 
 template<typename T>

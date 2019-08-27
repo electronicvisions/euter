@@ -21,7 +21,7 @@ Space::Space(std::bitset<3> axes, double scale_factor, coord_type offset, Bounda
     for(auto i=0u; i<d.size(); i++)
         d(i) = axes[i];
     mProj = ublas::diagonal_matrix<int>(3, d.data());
-	
+
 	mScaleFactor = scale_factor;
 	mOffset = offset;
 	mBoundaries = boundaries;
@@ -82,14 +82,13 @@ Structure::~Structure() {}
 ublas::vector<SpatialTypes::coord_type> Structure::generatePositions(size_t n) const
 {
     ublas::vector<coord_type> positions = _generatePositions(n);
-
     switch(fillOrder)
     {
         case FillOrder::Sequential:
             break;
         case FillOrder::Random:
-            std::random_shuffle(positions.begin(), positions.end());
-        default:
+			std::shuffle(positions.begin(), positions.end(), m_rng);
+		default:
             break;
     }
     return positions;
@@ -278,7 +277,7 @@ ublas::vector<SpatialTypes::coord_type> Sphere::sample(size_t n)
 }
 
 ublas::vector<SpatialTypes::coord_type> RandomStructure::_generatePositions(size_t n) const
-{ 
+{
 	ublas::vector<coord_type> positions = mShape->sample(n);
 
 	for(auto i=positions.begin(); i<positions.end(); ++i)

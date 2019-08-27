@@ -1,5 +1,8 @@
 #pragma once
 
+#ifndef PYPLUSPLUS
+#include <random>
+#endif
 #include <utility>
 #include <bitset>
 #include <boost/numeric/ublas/banded.hpp>
@@ -19,7 +22,7 @@ struct SpatialTypes
 {
     typedef double                                  distance_type;
     typedef ublas::bounded_vector<distance_type, 3> coord_type;
-	
+
 	struct Boundaries : ublas::bounded_vector<std::pair<double, double>, 3>
 	{
 		Boundaries()
@@ -78,6 +81,11 @@ protected:
 
     coord_type offset;
     FillOrder fillOrder;
+
+private:
+#ifndef PYPLUSPLUS
+	mutable std::mt19937 m_rng;
+#endif
 };
 
 class Line : public Structure
@@ -168,6 +176,6 @@ public:
     }
 private:
     ublas::vector<coord_type> _generatePositions(size_t n) const;
-	
+
 	boost::shared_ptr<Shape> mShape;
 };
