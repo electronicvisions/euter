@@ -10,6 +10,7 @@
 #include <log4cxx/logger.h>
 #else
 namespace log4cxx {
+typedef std::string LoggerPtr;
 namespace Logger {
 typedef std::string getLogger;
 } // namespace log4cxx
@@ -18,7 +19,7 @@ typedef std::string getLogger;
 template <typename... Args>
 void LOG4CXX_INFO(std::string prefix, Args&&... args)
 {
-	(std::cout << prefix << ... << args);
+	((std::cout << prefix) << ... << args);
 }
 #endif
 
@@ -128,9 +129,8 @@ void ObjectStore::setup(const Settings & settings,
 		metadata_packages += m.first;
 	}
 
-	LOG4CXX_INFO(logger,
-	             "ObjectStore initialized. Additional metadata: "
-	             << metadata_packages << ".");
+	LOG4CXX_INFO(
+	    logger, "ObjectStore initialized. Additional metadata: " + metadata_packages + ".");
 }
 
 void ObjectStore::reset()

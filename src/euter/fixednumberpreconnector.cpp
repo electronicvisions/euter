@@ -18,7 +18,7 @@ typedef std::string getLogger;
 template <typename... Args>
 void LOG4CXX_WARN(std::string prefix, Args&&... args)
 {
-	(std::cout << prefix << ... << args);
+	((std::cout << prefix) << ... << args);
 }
 #endif
 
