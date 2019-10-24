@@ -13,7 +13,7 @@ public:
 	typedef std::mt19937 rng_type;
 	static_assert(std::is_same<rng_type::result_type, result_type>::value, "");
 
-	NativeRandomGenerator() {}
+	NativeRandomGenerator() : mSeed(0), mRng(0) {}
 	NativeRandomGenerator(result_type seed) : mSeed(seed), mRng(seed) {}
 
 	virtual result_type next() { return mRng(); }
