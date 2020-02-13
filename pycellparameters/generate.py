@@ -9,16 +9,10 @@ mb = wrap.mb
 
 print dir(mb)
 
-for tt in ['ompi_datatype_t']:
-    try:
-        mb.decls(tt).exclude()
-    except: pass
-    #except matchers.declaration_not_found_t: pass
-
 # Special fix up
 containers.extend_std_containers(mb)
 
-for ns in ['::boost::serialization', '::boost::archive', '::boost::mpi']:
+for ns in ['::boost::serialization', '::boost::archive']:
     try:
         mb.namespace(ns).exclude()
     except matchers.declaration_not_found_t: pass

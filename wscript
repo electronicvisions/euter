@@ -30,7 +30,6 @@ def build(bld):
             use             = [
                 'euter_inc',
                 'boost_serialization',
-                'mpiconfig',
                 'LOG4CXX',
                 'halco_hicann_v2' # FIXME: artificial; only needed because of BOOST_MPL_LIMIT_LIST_SIZE
                 ],
