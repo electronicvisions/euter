@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 
 def depends(ctx):
+    ctx('halco')
     ctx('lib-boost-patches')
 
 def options(opt):
@@ -31,6 +32,7 @@ def build(bld):
                 'boost_serialization',
                 'mpiconfig',
                 'LOG4CXX',
+                'halco_hicann_v2' # FIXME: artificial; only needed because of BOOST_MPL_LIMIT_LIST_SIZE
                 ],
             install_path    = '${PREFIX}/lib',
             # gccxml requires non-variadic implementation of boost::variant for python wrappers
