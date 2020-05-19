@@ -79,7 +79,8 @@ struct CellTypeTraits<CellType::SpikeSourceArray> : CommonCellTypeTraits
 	static bool supported() { return true; }
 	typedef PyNNParameters::SpikeSourceArray Parameters;
 
-	static_assert(!std::is_pod<Parameters>::value, "Parameters should not be an POD");
+	static_assert(!(std::is_standard_layout<Parameters>::value &&
+	                std::is_trivial<Parameters>::value), "Parameters should not be an POD");
 
 	static const bool is_source = true;
 };
@@ -91,7 +92,8 @@ struct CellTypeTraits<CellType::SpikeSourceInhGamma> : CommonCellTypeTraits
 
 	typedef PyNNParameters::SpikeSourceInhGamma Parameters;
 
-	static_assert(!std::is_pod<Parameters>::value, "Parameters should not be an POD");
+	static_assert(!(std::is_standard_layout<Parameters>::value &&
+	                std::is_trivial<Parameters>::value), "Parameters should not be an POD");
 };
 
 template<>
