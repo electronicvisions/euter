@@ -112,7 +112,7 @@ protected:
 	boost::shared_ptr<RandomGenerator>  & getRng() { return rng; }
 };
 
-TYPED_TEST_CASE(SerializationTest, ArchiveTypeList);
+TYPED_TEST_SUITE(SerializationTest, ArchiveTypeList);
 
 TYPED_TEST(SerializationTest, CellParameterVector)
 {
@@ -326,7 +326,7 @@ struct MakeConnector<FromListConnector>
 };
 
 
-TYPED_TEST_CASE(ConnectSerializationTest, ConnectorTypeList);
+TYPED_TEST_SUITE(ConnectSerializationTest, ConnectorTypeList);
 
 TYPED_TEST(ConnectSerializationTest, Connector)
 {
@@ -385,7 +385,7 @@ public:
 	typedef RandDist RandDistType;
 };
 
-TYPED_TEST_CASE(RandomDistributionSerializationTest, RandomDistTypeList);
+TYPED_TEST_SUITE(RandomDistributionSerializationTest, RandomDistTypeList);
 
 TYPED_TEST(RandomDistributionSerializationTest, NativeRandomGeneratorDistributions)
 {

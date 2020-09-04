@@ -73,7 +73,7 @@ private:
 	std::unique_ptr<IArchive> ia;
 };
 
-TYPED_TEST_CASE(SerializationTest, ArchiveTypes);
+TYPED_TEST_SUITE(SerializationTest, ArchiveTypes);
 
 TYPED_TEST(SerializationTest, MakeArray)
 {
@@ -85,15 +85,15 @@ template <class T>
 class SerializationTest2 : public SerializationTest<T> {
 };
 
-TYPED_TEST_CASE_P(SerializationTest2);
+TYPED_TEST_SUITE_P(SerializationTest2);
 
 TYPED_TEST_P(SerializationTest2, MakeArrayWithNonPrintableData) {
 	this->serialize(true);
 	this->deserialize();
 }
 
-REGISTER_TYPED_TEST_CASE_P(SerializationTest2, MakeArrayWithNonPrintableData);
+REGISTER_TYPED_TEST_SUITE_P(SerializationTest2, MakeArrayWithNonPrintableData);
 
-INSTANTIATE_TYPED_TEST_CASE_P(SerializationTestBinaryOnly, // Instance name
+INSTANTIATE_TYPED_TEST_SUITE_P(SerializationTestBinaryOnly, // Instance name
                               SerializationTest2, // Test case name
                               BinaryArchives); // Type list
