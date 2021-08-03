@@ -49,8 +49,7 @@ def build(bld):
         bld(
                 features        = 'pytest',
                 tests           = bld.path.ant_glob('test/test_*.py'),
-                pythonpath      = '.',
-                use             = ['pyhmf', 'pyublas'],
+                use             = ['pycellparameters'],
                 install_path    = '${PREFIX}/bin/tests',
         )
     #bld.add_post_fun(summary)
