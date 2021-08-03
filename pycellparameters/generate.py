@@ -7,7 +7,7 @@ from pywrap import containers, namespaces, matchers
 wrap = Wrapper()
 mb = wrap.mb
 
-print dir(mb)
+print(dir(mb))
 
 # Special fix up
 containers.extend_std_containers(mb)
