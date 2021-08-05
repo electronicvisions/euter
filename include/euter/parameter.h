@@ -13,6 +13,14 @@
 #include <boost/preprocessor/variadic/to_seq.h>
 
 #include <boost/functional/hash.hpp>
+
+// GCCXML has problems with atomics -> removed before boost serialization is included
+#ifdef PYPLUSPLUS
+#undef __ATOMIC_RELAXED
+#undef __ATOMIC_ACQUIRE
+#undef __ATOMIC_RELEASE
+#undef __ATOMIC_ACQ_REL
+#endif // PYPLUSPLUS
 #include "boost/serialization/serialization.h"
 
 namespace euter {
