@@ -60,7 +60,7 @@ struct CLASS_NAME : BASE_NAME                                                  \
                                                                                \
 	double get(std::string p) const                                            \
 	{                                                                          \
-		GetterVisitor getter;                                                  \
+		GetterVisitor getter{};                                                  \
 		mParams.get(p, getter);                                                \
 		return getter.extract();                                               \
 	}                                                                          \
